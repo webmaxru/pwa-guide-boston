@@ -1,0 +1,32 @@
+[
+  {
+    "name": "Fenway Park",
+    "picture": "love-ya-fenway-park.jpg",
+    "reviews": "10213",
+    "description": "Hallowed ground to baseball purists, this cozy, quirky park has been the Boston Red Sox home field since 1912. The most distinctive feature of this classic baseball park is the 37-foot-tall left field wall, known as the Green Monster."
+  },
+  {
+    "name": "Museum of Fine Arts",
+    "picture": "museum-of-fine-arts.jpg",
+    "reviews": "5513",
+    "description": "Boston's oldest, largest and best-known art institution, the MFA houses one of the world's most comprehensive art collections and is renowned for its Impressionist paintings, Asian and Egyptian collections and early American art."
+  },
+  {
+    "name": "Boston Public Garden",
+    "picture": "make-way-for-ducklings.jpg",
+    "reviews": "5891",
+    "description": "This Frederick Law Olmsted-designed park, famous for its Swan Boats, has over 600 varieties of trees and an ever-changing array of flowers. It is America's first public garden."
+  },
+  {
+    "name": "North End",
+    "picture": "front-of-old-north-church.jpg",
+    "reviews": "4881",
+    "description": "This Italian neighborhood, Boston's oldest, is known for its wonderful restaurants and historic sights. Walk the cobblestone streets to take in the architecture and aromas of delicious food, and visit Paul Revere's house and the Old North Church while you're in the neighborhood."
+  },
+  {
+    "name": "Boston Public Library",
+    "picture": "exterior-view.jpg",
+    "reviews": "2475",
+    "description": "On the National Register of Historic Places, the library opened in 1852 as the first free, publicly-supported municipal library in America."
+  }
+]
