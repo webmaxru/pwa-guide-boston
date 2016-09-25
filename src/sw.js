@@ -64,6 +64,7 @@ self.addEventListener('fetch', (e) => {
         });
       })
 
+      // Cache-first
       // caches.match(e.request.clone()).then((response) => {
       //   return response || fetch(e.request.clone()).then((r2) => {
       //     return caches.open(dataCacheName).then((cache) => {
@@ -80,9 +81,16 @@ self.addEventListener('fetch', (e) => {
 
     // The code for App Shell
     e.respondWith(
+
       caches.match(e.request).then((response) => {
         return response || fetch(e.request);
       })
+
+      // Network-first
+      // fetch(e.request).catch((err) => {
+      //   return caches.match(e.request);
+      // })
+
     );
 
   }
