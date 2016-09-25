@@ -1,0 +1,9 @@
+<ul>
+  <li *ngFor="let attraction of attractions">
+    <img [src]="'./assets/data/' + attraction.picture" alt="{{attraction.name}}"/><br/>
+    <h1>{{attraction.name}}</h1><br/>
+    {{attraction.reviews}}<br/>
+    {{attraction.description}}
+    <hr/>
+  </li>
+</ul>
