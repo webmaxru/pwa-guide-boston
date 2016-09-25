@@ -7,11 +7,12 @@
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="icon" type="image/x-icon" href="favicon.ico">
+  <link rel="manifest" href="manifest.json">
 
 </head>
 
 <body>
-  
+
   <md-toolbar class="md-accent">
     <div class="md-toolbar-layout">
       <md-toolbar-row>
@@ -33,6 +34,20 @@
       console.log('ServiceWorker registration failed: ', err);
     });
   }
+
+  /*****************************************************************************
+  *
+  * Listen for the add to home screen events
+  *
+  ****************************************************************************/
+
+  window.addEventListener('beforeinstallprompt', function(e) {
+    console.log('[App] Showing install prompt');
+
+    e.userChoice.then(function(choiceResult) {
+      console.log(choiceResult.outcome);
+    });
+  });
 </script>
 
 </html>
