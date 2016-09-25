@@ -52,16 +52,28 @@ self.addEventListener('fetch', (e) => {
   if (e.request.url.indexOf('data/') != -1) {
 
     e.respondWith(
+
       fetch(e.request)
-        .then((response) => {
-          return caches.open(dataCacheName).then((cache) => {
+      .then((response) => {
+        return caches.open(dataCacheName).then((cache) => {
 
-            cache.put(e.request.url, response.clone());
-            log('Service Worker: Fetched & Cached', e.request.url);
-            return response.clone();
+          cache.put(e.request.url, response.clone());
+          log('Service Worker: Fetched & Cached URL ', e.request.url);
+          return response.clone();
 
-          });
-        })
+        });
+      })
+
+      // caches.match(e.request.clone()).then((response) => {
+      //   return response || fetch(e.request.clone()).then((r2) => {
+      //     return caches.open(dataCacheName).then((cache) => {
+      //       console.log('Service Worker: Fetched & Cached URL ', e.request.url);
+      //       cache.put(e.request.url, r2.clone());
+      //       return r2.clone();
+      //     });
+      //   });
+      // })
+
     );
 
   } else {
