@@ -1,8 +1,6 @@
 var log = console.log.bind(console);
 var err = console.error.bind(console);
 
-err('start SW');
-
 var version = '3';
 var cacheName = 'pwa-boston-guide-v' + version;
 var appShellFilesToCache = [
