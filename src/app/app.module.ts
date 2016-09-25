@@ -8,6 +8,10 @@ import { AttractionListComponent } from './attraction-list/attraction-list.compo
 
 import { AttractionService } from './attraction.service';
 
+import { MdToolbarModule } from '@angular2-material/toolbar';
+import { MdListModule } from '@angular2-material/list';
+import { MdButtonModule } from '@angular2-material/button';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -16,7 +20,10 @@ import { AttractionService } from './attraction.service';
   imports: [
     BrowserModule,
     FormsModule,
-    HttpModule
+    HttpModule,
+    MdToolbarModule.forRoot(),
+    MdListModule.forRoot(),
+    MdButtonModule.forRoot()
   ],
   providers: [AttractionService],
   bootstrap: [AppComponent]
