@@ -1,10 +1,9 @@
 var log = console.log.bind(console);
 var err = console.error.bind(console);
 
-err('start SW');
-
-var version = '3';
+var version = '4';
 var cacheName = 'pwa-boston-guide-v' + version;
+var dataCacheName = 'pwa-guide-boston-data-v' + version;
 var appShellFilesToCache = [
   './',
   './index.html',
@@ -47,22 +46,32 @@ self.addEventListener('activate', (e) => {
 });
 
 self.addEventListener('fetch', (e) => {
-  log('Service Worker: Fetch');
+  log('Service Worker: Fetch URL ', e.request.url);
 
-  e.respondWith(
-    caches.match(e.request).then((response) => {
+  // Match requests for data and handle them separately
+  if (e.request.url.indexOf('data/') != -1) {
 
-      if (response) {
-        log('Service Worker: returning ' + e.request.url + ' from cache');
-        return response;
-      } else {
-        log('Service Worker: returning ' + e.request.url + ' from net');
-        return fetch(e.request);
-      }
+    e.respondWith(
+      fetch(e.request)
+        .then((response) => {
+          return caches.open(dataCacheName).then((cache) => {
 
-      // w/o debug info: return response || fetch(e.request);
+            cache.put(e.request.url, response.clone());
+            log('Service Worker: Fetched & Cached', e.request.url);
+            return response.clone();
 
-    })
-  );
+          });
+        })
+    );
 
+  } else {
+
+    // The code for App Shell
+    e.respondWith(
+      caches.match(e.request).then((response) => {
+        return response || fetch(e.request);
+      })
+    );
+
+  }
 });
