@@ -9,5 +9,6 @@
   "display": "standalone",
   "short_name": "BostonGuide",
   "start_url": "index.html?homescreen=1",
-  "background_color": "#091f2f"
+  "background_color": "#091f2f",
+  "gcm_sender_id": "70689946818"
 }

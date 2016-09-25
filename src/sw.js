@@ -53,3 +53,24 @@ self.addEventListener('activate', (e) => {
   );
 
 });
+
+self.addEventListener('push', function(e) {
+  log('Service Worker: Received push event');
+  e.waitUntil(
+    fetch('http://localhost:8000/pushdata').then(function(response) {
+      return response.json();
+    }).then(function(data) {
+      var title = 'Boston Guide';
+      var body = data.msg;
+      var icon = '/assets/logo.png';
+      var tag = 'static-tag';
+      return self.registration.showNotification(title, {
+        body: body,
+        icon: icon,
+        tag: tag
+      });
+    }, function(err) {
+      err(err);
+    })
+  );
+});
